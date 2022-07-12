@@ -1,0 +1,22 @@
+app_id: cli_aafrq994322
+app_secret: eFjOHLPCdUfaklfDGHAhhh
+
+receivers:
+  da:
+    access_token: IQcGf3se3Fqi6h4aFDpLib
+    fsurl: "https://open.feishu.cn/open-apis/bot/v2/hook/"
+    mentions:
+      mobiles: ["12800138000"]
+
+  bigdata:
+    access_token: IQcGf3se3Fqi6h4
+    fsurl: "https://open.feishu.cn/open-apis/bot/v2/hook/"
+    mentions:
+      mobiles: ["13800138000", "13800138000"]
+      emails: ["xxx@xxx.com"]
+
+  tjyl:
+    access_token: IQcGf3se3Fqi6h4aFDpLib
+    fsurl: "https://open.feishu.cn/open-apis/bot/v2/hook/"
+    mentions:
+      mobiles: ["13800138000", "13800138000"]
