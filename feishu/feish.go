@@ -48,6 +48,7 @@ func (b Feishu) Send(alerts *model.WebhookMessage) error {
 	if err != nil {
 		return err
 	}
+	fmt.Println(buf.String())
 	return b.sdk.WebhookV2(b.webhook, &buf)
 }
 
@@ -83,6 +84,7 @@ func (b Feishu) preprocessAlerts(webhookMsg *model.WebhookMessage) error {
 
 	// preprocess using alert template
 	webhookMsg.Severity = webhookMsg.Alerts.Severity()
+	webhookMsg.SendNotify = webhookMsg.Alerts.SendNotify()
 
 	n := 0
 	for _, alert := range webhookMsg.Alerts.Firing() {

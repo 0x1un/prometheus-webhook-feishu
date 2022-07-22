@@ -71,3 +71,15 @@ func (as Alerts) Severity() string {
 	}
 	return severity
 }
+
+func (as Alerts) SendNotify() string {
+	notify := "false"
+	for _, a := range as {
+		if _, ok := a.Labels["send_notify"]; ok {
+			if a.Labels["send_notify"] == "true" {
+				notify = "true"
+			}
+		}
+	}
+	return notify
+}

@@ -107,16 +107,17 @@
                      "tag": "lark_md",
                      "content": "**请尽快通知相关人员，并尽快解决问题**\t"
                    }]
-                 },
-                 {{ range .OpenIDs }}
-                    {
-                        "tag": "div",
-                        "text": {
-                            "content": "<at id={{.}}></at>",
-                            "tag": "lark_md"
+                 }
+                {{ if (eq .SendNotify "true") }}
+                ,
+                        {
+                            "tag": "div",
+                            "text": {
+                                "content": "{{ range .OpenIDs }}<at id={{.}}></at>{{ end }}",
+                                "tag": "lark_md"
+                            }
                         }
-                    }
-                 {{ end }}
+                {{ end }}
                  {{- /* zh_cn end*/ -}}
             ]
         }

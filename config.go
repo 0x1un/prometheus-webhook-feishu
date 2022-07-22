@@ -55,7 +55,10 @@ func (sc *SafeConfig) GetConfigByName(name string) (*ReceiverConfig, error) {
 	if receiver, ok := sc.C.Receivers[name]; ok {
 		return &receiver, nil
 	}
-	return &ReceiverConfig{"", "", nil}, fmt.Errorf("no credentials found for receiver %s", name)
+	return &ReceiverConfig{"", "", &Mentions{
+		Mobiles: nil,
+		Emails:  nil,
+	}}, fmt.Errorf("no credentials found for receiver %s", name)
 }
 
 var Client = resty.New()
@@ -63,6 +66,9 @@ var Client = resty.New()
 type Token string
 
 func (t Token) GetUserIDByMobilesOrEmails(mobiles []string, emails []string) []string {
+	if len(mobiles) == 0 && len(emails) == 0 {
+		return nil
+	}
 	resp, err := Client.R().SetHeader(
 		"Authorization", fmt.Sprintf("Bearer %s", t)).SetBody(map[string]interface{}{
 		"mobiles": mobiles,

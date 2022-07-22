@@ -1,7 +1,5 @@
 package model
 
-import ()
-
 type WebhookMessage struct {
 	// reference: https://prometheus.io/docs/alerting/latest/notifications/
 	AlertMessage
@@ -12,5 +10,6 @@ type WebhookMessage struct {
 	TitlePrefix    string
 	FiringNum      int
 	Severity       string
+	SendNotify     string
 	AlertHosts     map[string]string
 }

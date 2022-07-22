@@ -79,7 +79,6 @@ func init() {
 
 func GetEmbedTemplate(filename string) (*template.Template, error) {
 	if t, ok := embedTemplates[filename]; ok {
-		fmt.Println(t)
 		return t, nil
 	}
 

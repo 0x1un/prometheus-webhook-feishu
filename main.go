@@ -85,7 +85,9 @@ func main() {
 			webhookMessage.AlertHosts = make(map[string]string)
 			token := sc.GetTenantAccessToken()
 			mentions := token.GetUserIDByMobilesOrEmails(receiverConfig.Mentions.Mobiles, receiverConfig.Mentions.Emails)
-			webhookMessage.OpenIDs = mentions
+			if mentions != nil {
+				webhookMessage.OpenIDs = mentions
+			}
 			err = webhook.Send(&webhookMessage)
 
 			if err != nil {
